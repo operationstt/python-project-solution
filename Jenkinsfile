@@ -15,6 +15,7 @@ pipeline {
     
     stage ('Test and Build') {
         steps {                
+				sh 'sudo chmod 755 $WORKSPACE/build.sh'
 				sh '$WORKSPACE/build.sh'
             }
 	    }
