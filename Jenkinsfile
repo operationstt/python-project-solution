@@ -9,7 +9,7 @@ pipeline {
         }
 	 stage('Pull Source Code') {
             steps {
-				git credentialsId: 'hp', url: 'git@github.com:operationstt/java-project-solution.git'
+				git credentialsId: 'hp', url: 'git@github.com:operationstt/python-project-solution.git'
             }
         }
     
