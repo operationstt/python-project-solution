@@ -7,7 +7,7 @@ pipeline {
                 sh 'sudo rm -rf $WORKSPACE/*'
             }
         }
-	 stage('Pull Source Code') {
+	stage('Pull Source Code') {
             steps {
 				git credentialsId: 'hp', url: 'git@github.com:operationstt/python-project-solution.git'
             }
@@ -19,7 +19,8 @@ pipeline {
                         sh 'scp -o StrictHostKeyChecking=no -i ${privatefile} ./* ubuntu@18.191.205.199:~/'			
 						sh 'ssh -o StrictHostKeyChecking=no -i ${privatefile} ubuntu@18.191.205.199 bash build.sh'
 		 }
-       }
+		}
+	}
 	stage ('Deployment to server node') {
             steps {                
                 withCredentials([sshUserPrivateKey(credentialsId: 'python', keyFileVariable: 'privatefile', passphraseVariable: '', usernameVariable: 'username')]) {                                 
