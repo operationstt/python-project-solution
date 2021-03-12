@@ -13,7 +13,7 @@ pipeline {
             }
         }
     
-    stage ('Test and Build') {
+    stage ('Initialize an Envoirnment') {
             steps {                
                 withCredentials([sshUserPrivateKey(credentialsId: 'python', keyFileVariable: 'privatefile', passphraseVariable: '', usernameVariable: 'username')]) {             
                         sh 'scp -o StrictHostKeyChecking=no -i ${privatefile} ./* ubuntu@18.191.205.199:~/'			
@@ -21,7 +21,7 @@ pipeline {
 		 }
 		}
 	}
-	stage ('Deployment to server node') {
+	stage ('Test and Deployment to server node') {
             steps {                
                 withCredentials([sshUserPrivateKey(credentialsId: 'python', keyFileVariable: 'privatefile', passphraseVariable: '', usernameVariable: 'username')]) {                                 
 					sh 'ssh -o StrictHostKeyChecking=no -i ${privatefile} ubuntu@18.191.205.199 bash start.sh'  
