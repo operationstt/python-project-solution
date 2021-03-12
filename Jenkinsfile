@@ -15,7 +15,7 @@ pipeline {
     
     stage ('Test and Build') {
         steps {                
-				sh 'bash build.sh'
+				sh 'build.sh'
             }
 	    }
 	stage ('Deployment to server node') {
